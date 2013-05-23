@@ -11,7 +11,42 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130522051033) do
+ActiveRecord::Schema.define(:version => 20130523013042) do
+
+  create_table "cohorts", :force => true do |t|
+    t.string   "name"
+    t.integer  "user_id"
+    t.integer  "project_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "cohorts", ["project_id"], :name => "index_cohorts_on_project_id"
+  add_index "cohorts", ["user_id"], :name => "index_cohorts_on_user_id"
+
+  create_table "enquiries", :force => true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "subject"
+    t.string   "body"
+    t.boolean  "join_mailing_list"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  create_table "projects", :force => true do |t|
+    t.string   "image_url"
+    t.string   "link_url"
+    t.text     "about"
+    t.string   "name"
+    t.integer  "user_id"
+    t.integer  "cohort_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "projects", ["cohort_id"], :name => "index_projects_on_cohort_id"
+  add_index "projects", ["user_id"], :name => "index_projects_on_user_id"
 
   create_table "roles", :force => true do |t|
     t.string   "name"
@@ -42,6 +77,12 @@ ActiveRecord::Schema.define(:version => 20130522051033) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
+    t.text     "about"
+    t.string   "linkedin_url"
+    t.string   "website_url"
+    t.string   "image_url"
+    t.integer  "project_id"
+    t.integer  "cohort_id"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

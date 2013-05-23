@@ -5,10 +5,11 @@
     <tr>
       <th>Username</th>
       <th>Email</th>
-      <th>Registered</th>
-      <th>Role</th>
-      <th></th>
-      <th></th>
+      <th>About</th>
+      <th>LinkedIn</th>
+      <th>Website</th>
+      <th>Picture</th>
+      <th>Cohort</th>
     </tr>
   </thead>
   <tbody>
@@ -16,13 +17,11 @@
     <tr>
       <td><%= link_to user.name, user %></td>
       <td><%= user.email %></td>
-      <td><%= user.created_at.to_date %></td>
-      <td><%= user.roles.first.name.titleize unless user.roles.first.nil? %></td>
-      <td>
-        <a data-toggle="modal" href="#role-options-<%= user.id %>" class="btn btn-mini" type="button">Change role</a>
-        <%= render user %>
-      </td>
-      <td><%= link_to("Delete user", user_path(user), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'btn btn-mini') unless user == current_user %></td>
+      <td><%= user.about %></td>
+      <td><%= user.linkedin_url %></td>
+      <td><%= user.website_url %></td>
+      <td><%= user.image_url %></td>
+      <td><%= user.cohort_id %></td>
     </tr>
   <% end %>
   </tbody>
