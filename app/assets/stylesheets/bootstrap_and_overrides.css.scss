@@ -8,7 +8,7 @@ body { padding-top: 60px; }
 }
 
 .content {
-	max-width: 750px;
+	max-width: 800px;
 	margin-left: auto;
 	margin-right: auto;
 }
@@ -24,7 +24,30 @@ input, textarea, .uneditable-input {
 }
 
 .portrait {
-	max-width: 320px;
-	max-height: 320px;
+	max-width: 250px;
+	max-height: 250px;
 	border-radius: 50%;
+	margin: 25px;
+}
+
+a [class^="icon-twitter"] {
+	color: #4099FF;
+}
+
+a [class^="icon-github"] {
+	color: #333333;
+}
+
+a [class^="icon-linkedin"] {
+	color: #4875B4;
+}
+
+a [class^="icon-comments-alt"] {
+	color: #333333;
+}
+
+a [class^="icon-"],
+a [class*=" icon-"] {
+	text-decoration: none;
+	margin: 6px;
 }

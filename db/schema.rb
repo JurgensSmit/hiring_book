@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130523020728) do
+ActiveRecord::Schema.define(:version => 20130523121122) do
 
   create_table "cohorts", :force => true do |t|
     t.string   "name"
@@ -93,6 +93,8 @@ ActiveRecord::Schema.define(:version => 20130523020728) do
     t.string   "image_url"
     t.integer  "project_id"
     t.integer  "cohort_id"
+    t.string   "github_url"
+    t.string   "twitter_url"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

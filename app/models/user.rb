@@ -12,7 +12,8 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :role_ids, :as => :admin
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me, 
-  	:about, :linkedin_url, :website_url, :image_url, :project_ids, :cohort_id
+  	:about, :linkedin_url, :website_url, :github_url, :twitter_url, :image_url, 
+    :project_ids, :cohort_id
 
   mount_uploader :image_url, ImageUploader
 

@@ -72,5 +72,8 @@ module HiringBook
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    # Include font awesome in the asset pipeline
+    config.assets.paths << "#{Rails.root}/app/assets/fonts"
   end
 end
