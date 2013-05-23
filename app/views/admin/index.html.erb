@@ -1,6 +1,5 @@
 <h3>Users</h3>
-<div class="span8">
-<table class="table table-striped">
+<table class="table table-bordered table-striped table-hover">
   <thead>
     <tr>
       <th>Username</th>
@@ -27,4 +26,31 @@
   <% end %>
   </tbody>
 </table>
-</div>
+
+<h3>Cohorts</h3>
+
+<table class="table table-bordered table-striped table-hover">
+  <tr>
+    <th>Name</th>
+    <th>First student</th>
+    <th>First project</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @cohorts.each do |cohort| %>
+  <tr>
+    <td><%= cohort.name %></td>
+    <td><%= cohort.users.first.name unless cohort.users.first.nil? %></td>
+    <td><%= cohort.projects.first.name unless cohort.projects.first.nil? %></td>
+    <td><%= link_to 'Show', cohort, :class => 'btn btn-mini' %></td>
+    <td><%= link_to 'Edit', edit_cohort_path(cohort), :class => 'btn btn-mini' %></td>
+    <td><%= link_to 'Destroy', cohort, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-mini' %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Cohort', new_cohort_path %>

@@ -7,12 +7,16 @@
 
 <p>
   <b>User:</b>
-  <%= @cohort.user %>
+  <% @cohort.users.each do |user| %>
+	  <%= link_to user.name, user %>
+  <% end %>
 </p>
 
 <p>
-  <b>Project:</b>
-  <%= @cohort.project %>
+  <b>Projects:</b>
+  <% @cohort.projects.each do |project| %>
+	  <%= link_to project.name, project %>
+  <% end %>
 </p>
 
 

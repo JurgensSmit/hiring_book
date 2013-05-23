@@ -3,8 +3,6 @@
 <table class="table table-striped">
   <tr>
     <th>Name</th>
-    <th>User</th>
-    <th>Project</th>
     <th></th>
     <th></th>
     <th></th>
@@ -13,8 +11,6 @@
 <% @cohorts.each do |cohort| %>
   <tr>
     <td><%= cohort.name %></td>
-    <td><%= cohort.user %></td>
-    <td><%= cohort.project %></td>
     <td><%= link_to 'Show', cohort %></td>
     <td><%= link_to 'Edit', edit_cohort_path(cohort) %></td>
     <td><%= link_to 'Destroy', cohort, method: :delete, data: { confirm: 'Are you sure?' } %></td>

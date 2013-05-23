@@ -2,12 +2,12 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :image_url %>
-    <%= f.input :link_url %>
-    <%= f.input :about %>
     <%= f.input :name %>
-    <%= f.association :user %>
-    <%= f.association :cohort %>
+    <%= f.input :about, input_html: { rows: 8, class: "full-width" } %>
+    <%= f.input :link_url %>
+    <%= f.input :image_url, :as => :file %>
+    <%= f.association :users, as: :check_boxes %>
+    <%= f.association :cohort, as: :radio_buttons %>
   </div>
 
   <div class="form-actions">
