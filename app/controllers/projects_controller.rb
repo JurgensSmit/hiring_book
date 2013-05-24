@@ -24,6 +24,7 @@ class ProjectsController < ApplicationController
   # GET /projects/new
   # GET /projects/new.json
   def new
+    authorize! :create, Project, :message => 'Not authorised for that action.'
     @project = Project.new
 
     respond_to do |format|
@@ -34,12 +35,14 @@ class ProjectsController < ApplicationController
 
   # GET /projects/1/edit
   def edit
+    authorize! :update, Project, :message => 'Not authorised for that action.'
     @project = Project.find(params[:id])
   end
 
   # POST /projects
   # POST /projects.json
   def create
+    authorize! :create, Project, :message => 'Not authorised for that action.'
     @project = Project.new(params[:project])
 
     respond_to do |format|
@@ -56,6 +59,7 @@ class ProjectsController < ApplicationController
   # PUT /projects/1
   # PUT /projects/1.json
   def update
+    authorize! :update, Project, :message => 'Not authorised for that action.'
     @project = Project.find(params[:id])
 
     respond_to do |format|
@@ -72,11 +76,12 @@ class ProjectsController < ApplicationController
   # DELETE /projects/1
   # DELETE /projects/1.json
   def destroy
+    authorize! :destroy, @project, :message => 'Not authorised as an administrator.'
     @project = Project.find(params[:id])
     @project.destroy
 
     respond_to do |format|
-      format.html { redirect_to projects_url }
+      format.html { redirect_to admin_path }
       format.json { head :no_content }
     end
   end

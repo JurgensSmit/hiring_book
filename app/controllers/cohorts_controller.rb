@@ -1,4 +1,5 @@
 class CohortsController < ApplicationController
+  load_and_authorize_resource
   # GET /cohorts
   # GET /cohorts.json
   def index
@@ -44,7 +45,7 @@ class CohortsController < ApplicationController
 
     respond_to do |format|
       if @cohort.save
-        format.html { redirect_to @cohort, notice: 'Cohort was successfully created.' }
+        format.html { redirect_to admin_path, notice: 'Cohort was successfully created.' }
         format.json { render json: @cohort, status: :created, location: @cohort }
       else
         format.html { render action: "new" }
@@ -60,7 +61,7 @@ class CohortsController < ApplicationController
 
     respond_to do |format|
       if @cohort.update_attributes(params[:cohort])
-        format.html { redirect_to @cohort, notice: 'Cohort was successfully updated.' }
+        format.html { redirect_to admin_path, notice: 'Cohort was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -76,7 +77,7 @@ class CohortsController < ApplicationController
     @cohort.destroy
 
     respond_to do |format|
-      format.html { redirect_to cohorts_url }
+      format.html { redirect_to admin_path }
       format.json { head :no_content }
     end
   end

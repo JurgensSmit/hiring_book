@@ -1,23 +1,23 @@
-<div class="row-fluid">
-	<div class="span5 text-center">
-		<%= image_tag project.image_url, class: 'img-project' %>
-	</div>
-	<div class="span7">	
-		<h2><%= link_to project.name, project %></h2>
-		<p class="lead"><%= project.about %></p>
-		<p class="lead"><%= link_to project.link_url, url_with_protocol( project.link_url ), target: "_blank" %></p>
+<% unless project.cohort.nil? %>
+	<div class="row-fluid">
+		<div class="span5 text-center">
+			<%= image_tag project.image_url, class: 'img-project' %>
+		</div>
+		<div class="span7">	
+			<h2><%= link_to project.name, project %></h2>
+			<p class="lead"><%= project.about %></p>
+			<p class="lead"><%= link_to project.link_url, url_with_protocol( project.link_url ), target: "_blank" %></p>
 
-		<p>Created by &nbsp;
-		  <% project.users.each do |user| %>
-		    <%= link_to user.name, user, class: 'badge badge-info' unless user.cohort.nil? %>
-		  <% end %>
-		  &nbsp; in <%= project.cohort.name %></p>
+			<p>Created by &nbsp;
+			  <% project.users.each do |user| %>
+			    <%= link_to user.name, user, class: 'badge badge-info' unless user.cohort.nil? %>
+			  <% end %>
+			  &nbsp; in <%= project.cohort.name %></p>
 
-		<% if user_signed_in? %>
-		  <% if current_user.has_role? :admin %>
-		    <%= link_to 'Edit', edit_project_path(project) %>
-		  <% end %>
-		<% end %>
+			<% if user_signed_in? %>
+			    <%= link_to 'Edit', edit_project_path(project) %>
+			<% end %>
+		</div>
 	</div>
-</div>
-<hr>
+	<hr>
+<% end %>
