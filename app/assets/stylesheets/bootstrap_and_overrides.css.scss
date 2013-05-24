@@ -37,6 +37,14 @@ img.img-project {
 	border-radius: 10%;
 }
 
+img.img-small {
+	max-height: 34px; 
+	max-width: 34px;
+	margin-top: 6px;
+	margin-bottom: 6px;
+	margin-right: 10px;
+}
+
 a [class^="icon-twitter"] {
 	color: #4099FF;
 }

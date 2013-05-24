@@ -1,5 +1,5 @@
 <div class="row-fluid">
-	<div class="span5">
+	<div class="span5 text-center">
 		<%= image_tag project.image_url, class: 'img-project' %>
 	</div>
 	<div class="span7">	
@@ -9,7 +9,7 @@
 
 		<p>Created by &nbsp;
 		  <% project.users.each do |user| %>
-		    <%= link_to user.name, user, class: 'badge badge-info' %>
+		    <%= link_to user.name, user, class: 'badge badge-info' unless user.cohort.nil? %>
 		  <% end %>
 		  &nbsp; in <%= project.cohort.name %></p>
 
@@ -19,5 +19,5 @@
 		  <% end %>
 		<% end %>
 	</div>
-	<hr>
 </div>
+<hr>

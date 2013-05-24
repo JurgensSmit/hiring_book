@@ -6,8 +6,7 @@
       <th>Email</th>
       <th>Registered</th>
       <th>Role</th>
-      <th></th>
-      <th></th>
+      <th>Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -20,54 +19,75 @@
       <td>
         <a data-toggle="modal" href="#role-options-<%= user.id %>" class="btn btn-mini" type="button">Change role</a>
         <%= render 'users/role', :user => user %>
-      </td>
-      <td><%= link_to("Delete user", user_path(user), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'btn btn-mini') unless user == current_user %></td>
+        <%= link_to("Delete user", user_path(user), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'btn btn-mini') unless user == current_user %></td>
     </tr>
   <% end %>
   </tbody>
 </table>
 
-<h3>Cohorts</h3>
+<h3>Listing projects</h3>
 
 <table class="table table-bordered table-striped table-hover">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Link</th>
+        <th>About</th>
+        <th>Cohort</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+
+<% @projects.each do |project| %>
   <tr>
-    <th>Name</th>
-    <th>First student</th>
-    <th>First project</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <td><%= project.name %></td>
+    <td><%= project.link_url %></td>
+    <td><%= truncate project.about, length: 25 %></td>
+    <td><%= project.cohort.name %></td>
+    <td><%= link_to 'Show', project, :class => 'btn btn-mini' %>
+    <%= link_to 'Edit', edit_project_path(project), :class => 'btn btn-mini' %>
+    <%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-mini' %></td>
   </tr>
+<% end %>
+</table>
+<%= link_to 'New Project', new_project_path, class: 'btn' %><br><br>
+
+<h3>Cohorts</h3>
+<table class="table table-bordered table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>First student</th>
+      <th>First project</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
 
 <% @cohorts.each do |cohort| %>
   <tr>
     <td><%= cohort.name %></td>
     <td><%= cohort.users.first.name unless cohort.users.first.nil? %></td>
     <td><%= cohort.projects.first.name unless cohort.projects.first.nil? %></td>
-    <td><%= link_to 'Show', cohort, :class => 'btn btn-mini' %></td>
-    <td><%= link_to 'Edit', edit_cohort_path(cohort), :class => 'btn btn-mini' %></td>
-    <td><%= link_to 'Destroy', cohort, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-mini' %></td>
+    <td><%= link_to 'Show', cohort, :class => 'btn btn-mini' %>
+    <%= link_to 'Edit', edit_cohort_path(cohort), :class => 'btn btn-mini' %>
+    <%= link_to 'Destroy', cohort, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-mini' %></td>
   </tr>
 <% end %>
 </table>
+<%= link_to 'New Cohort', new_cohort_path, class: 'btn' %><br><br>
 
-<br />
-
-<%= link_to 'New Cohort', new_cohort_path %>
-
-<h1>Listing enquiries</h1>
-
-<table class="table table-striped">
-  <tr>
-    <th>Name</th>
-    <th>Email</th>
-    <th>Subject</th>
-    <th>Body</th>
-    <th>Join mailing list</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<h3>Listing enquiries</h3>
+<table class="table table-bordered table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Subject</th>
+      <th>Body</th>
+      <th>Join mailing list</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
 
 <% @enquiries.each do |enquiry| %>
   <tr>
@@ -76,9 +96,9 @@
     <td><%= enquiry.subject %></td>
     <td><%= enquiry.body %></td>
     <td><%= enquiry.join_mailing_list %></td>
-    <td><%= link_to 'Show', enquiry %></td>
-    <td><%= link_to 'Edit', edit_enquiry_path(enquiry) %></td>
-    <td><%= link_to 'Destroy', enquiry, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Show', enquiry, :class => 'btn btn-mini' %>
+    <%= link_to 'Edit', edit_enquiry_path(enquiry), :class => 'btn btn-mini' %>
+    <%= link_to 'Destroy', enquiry, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-mini' %></td>
   </tr>
 <% end %>
 </table>

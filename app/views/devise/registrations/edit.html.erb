@@ -12,7 +12,7 @@
   <%= f.input :github_url, label: 'GitHub URL', placeholder: "e.g. www.github.com/yourname" %>
   <%= f.input :twitter_url, label: 'Twitter URL', placeholder: "e.g. www.twitter.com/yourname" %>
   <%= f.association :projects, as: :check_boxes, hint: 'Projects where you gave a significant contribution' %>
-  <%= f.association :cohort, as: :select, hint: "Selecting a cohort will publish your profile on the front page" %>
+  <!-- f.association :cohort, as: :select, hint: "Selecting a cohort will publish your profile on the front page" -->
   <%= f.input :password, :autocomplete => "off", :hint => "Leave it blank if you don't want to change it", :required => false %>
   <%= f.input :password_confirmation, :required => false %>
   <%= f.input :current_password, :hint => "We need your current password to confirm your changes", :required => true %>
