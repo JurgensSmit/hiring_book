@@ -1,20 +1,5 @@
-<%= image_tag @project.image_url, class: 'img-rounded' %>
-<h3><%= @project.name %></h3>
-<p class="lead">
-  <%= link_to @project.link_url, url_with_protocol( @project.link_url ), target: "_blank" %>
-</p>
-<p><%= @project.about %></p>
+<h3>Built at Sydney Dev Camp</h3>
+<%= render @project %>
 
-
-
-<p>Created by 
-  <% @project.users.each do |user| %>
-    <%= link_to user.name, user, class: 'badge badge-info' %>
-  <% end %>
-  in <%= @project.cohort.name %></p>
-
-<% if user_signed_in? %>
-  <% if current_user.has_role? :admin %>
-    <%= link_to 'Edit', edit_project_path(@project) %>
-  <% end %>
-<% end %>
+<h3>Contributors</h3>
+<%= render @project.users %>

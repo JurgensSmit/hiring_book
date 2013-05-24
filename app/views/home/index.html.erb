@@ -1,34 +1,5 @@
 <h3>Great Graduates</h3>
-
-<% @users.each do |user| %>
-	<div class="row-fluid">
-		<div class="span5">
-			<%= image_tag user.image_url, :class => 'portrait' unless user.image_url.blank? %>
-		</div>
-		<div class="span7">
-			<h3><%= link_to user.name, user %></h3>
-			<p class="lead"><%= user.about %></p>
-			<p>I contributed to&nbsp;&nbsp;
-				<% user.projects.each do |project| %>
-					<%= link_to project.name, project, class: 'badge badge-info' %>
-				<% end %>
-			</p>
-			<div>
-				<%= link_to '<i class="icon-comments-alt icon-3x"></i>'.html_safe, url_with_protocol(user.website_url) unless user.website_url.blank? %>
-				<%= link_to '<i class="icon-linkedin-sign icon-3x"></i>'.html_safe, url_with_protocol(user.linkedin_url) unless user.linkedin_url.blank? %>
-				<%= link_to '<i class="icon-twitter-sign icon-3x"></i>'.html_safe, url_with_protocol(user.twitter_url) unless user.twitter_url.blank? %>
-				<%= link_to '<i class="icon-github-sign icon-3x"></i>'.html_safe, url_with_protocol(user.github_url) unless user.github_url.blank? %>
-			</div>
-		</div>
-	</div>
-<% end %>
+<%= render :partial => @users %>
 
 <h3>Awesome Apps</h3>
-<% @projects.each do |project| %>
-    <td><%= project.image_url %></td>
-    <td><%= project.link_url %></td>
-    <td><%= project.about %></td>
-    <td><%= project.name %></td>
-    <td><%= project.cohort %></td>
-  </tr>
-<% end %>
+<%= render :partial => @projects %>

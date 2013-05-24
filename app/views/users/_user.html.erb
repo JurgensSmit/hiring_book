@@ -1,15 +1,24 @@
-<div id="role-options-<%= user.id %>" class="modal" style="display: none;">
-  <%= simple_form_for user, :url => user_path(user), :html => {:method => :put, :class => 'form-horizontal' } do |f| %>
-    <div class="modal-header">
-      <a class="close" data-dismiss="modal">&#215;</a>
-      <h3>Change Role</h3>
-    </div>
-    <div class="modal-body">
-      <%= f.input :role_ids, :collection => Role.all, :as => :radio_buttons, :label_method => lambda {|t| t.name.titleize}, :label => false, :item_wrapper_class => 'inline', checked: user.role_ids.first %>
-    </div>
-    <div class="modal-footer">
-      <%= f.submit "Change Role", :class => "btn" %>
-      <a class="btn" data-dismiss="modal" href="#">Close</a>
-    </div>
-  <% end %>
-</div>
+<% unless user.cohort.nil? %>
+	<div class="row-fluid">
+		<div class="span5">
+			<%= image_tag user.image_url, :class => 'img-portrait' unless user.image_url.blank? %>
+		</div>
+		<div class="span7">
+			<h2><%= link_to user.name, user %></h2>
+			<p class="lead"><%= user.about %></p>
+			<p>Contributed to &nbsp;
+				<% user.projects.each do |project| %>
+					<%= link_to project.name, project, class: 'badge badge-success' %>
+				<% end %>
+				&nbsp; in <%= user.cohort.name %>
+			</p>
+			<div>
+				<%= link_to '<i class="icon-comments-alt icon-3x"></i>'.html_safe, url_with_protocol(user.website_url), target: "_blank", :title => 'Blog', :rel => 'tooltip', "data-placement" => "bottom" unless user.website_url.blank? %>
+				<%= link_to '<i class="icon-linkedin-sign icon-3x"></i>'.html_safe, url_with_protocol(user.linkedin_url), target: "_blank", :title => 'LinkedIn', :rel => 'tooltip', "data-placement" => "bottom" unless user.linkedin_url.blank? %>
+				<%= link_to '<i class="icon-twitter-sign icon-3x"></i>'.html_safe, url_with_protocol(user.twitter_url), target: "_blank", :title => 'Twitter', :rel => 'tooltip', "data-placement" => "bottom" unless user.twitter_url.blank? %>
+				<%= link_to '<i class="icon-github-sign icon-3x"></i>'.html_safe, url_with_protocol(user.github_url), target: "_blank", :title => 'GitHub', :rel => 'tooltip', "data-placement" => "bottom" unless user.github_url.blank? %>
+			</div>
+		</div>
+	</div>
+	<hr>
+<% end %>
