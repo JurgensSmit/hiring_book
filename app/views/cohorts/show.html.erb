@@ -1,24 +1,9 @@
-<p id="notice"><%= notice %></p>
+<h2>Cohort of <%= @cohort.name %></h2>
 
-<p>
-  <b>Name:</b>
-  <%= @cohort.name %>
-</p>
+<h3>Graduates</h3>
+<%= render @cohort.users %>
 
-<p>
-  <b>User:</b>
-  <% @cohort.users.each do |user| %>
-	  <%= link_to user.name, user %>
-  <% end %>
-</p>
+<h3>Projects</h3>
+<%= render @cohort.projects %>
 
-<p>
-  <b>Projects:</b>
-  <% @cohort.projects.each do |project| %>
-	  <%= link_to project.name, project %>
-  <% end %>
-</p>
-
-
-<%= link_to 'Edit', edit_cohort_path(@cohort) %> |
-<%= link_to 'Back', cohorts_path %>
+<%= link_to 'Edit', edit_cohort_path(@cohort), class: 'btn' %>

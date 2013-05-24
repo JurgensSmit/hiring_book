@@ -2,9 +2,6 @@ HiringBook::Application.routes.draw do
   get "admin/index"
   match "admin" => "admin#index"
 
-  resources :enquiries
-
-
   resources :cohorts
 
 

@@ -83,30 +83,3 @@
 <% end %>
 </table>
 <%= link_to 'New Cohort', new_cohort_path, class: 'btn' %><br><br>
-
-<h3>Listing enquiries</h3>
-<table class="table table-bordered table-striped table-hover">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Email</th>
-      <th>Subject</th>
-      <th>Body</th>
-      <th>Join mailing list</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-
-<% @enquiries.each do |enquiry| %>
-  <tr>
-    <td><%= enquiry.name %></td>
-    <td><%= enquiry.email %></td>
-    <td><%= enquiry.subject %></td>
-    <td><%= enquiry.body %></td>
-    <td><%= enquiry.join_mailing_list %></td>
-    <td><%= link_to 'Show', enquiry, :class => 'btn btn-mini' %>
-    <%= link_to 'Edit', edit_enquiry_path(enquiry), :class => 'btn btn-mini' %>
-    <%= link_to 'Destroy', enquiry, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-mini' %></td>
-  </tr>
-<% end %>
-</table>

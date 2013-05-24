@@ -6,7 +6,6 @@ class AdminController < ApplicationController
     @users = User.all
     @projects = Project.all
     @cohorts = Cohort.all
-    @enquiries = Enquiry.all
   end
 
 end
