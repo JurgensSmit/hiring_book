@@ -43,6 +43,7 @@ img.img-small {
 	margin-top: 6px;
 	margin-bottom: 6px;
 	margin-right: 10px;
+	margin-left: 10px;
 }
 
 a [class^="icon-twitter"] {
@@ -67,6 +68,10 @@ a:hover, a:visited, a:link, a:active {
 
 a [class^="icon-"], a [class*=" icon-"] {
 	margin: 6px;
+}
+
+a [class^="badge-"], a [class*=" badge-"] {
+	margin: 1px;
 }
 
 body {
