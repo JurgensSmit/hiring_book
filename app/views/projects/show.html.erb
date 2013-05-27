@@ -1,3 +1,4 @@
+<% title @project.name %>
 <h3>Built at Sydney Dev Camp</h3>
 <%= render @project %>
 <%= @project.cohort.nil? ? '<p class="lead">Ask an admin to publish your project by adding it to a cohort</p>'.html_safe : "" %>

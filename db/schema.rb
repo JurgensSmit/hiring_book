@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130524062315) do
+ActiveRecord::Schema.define(:version => 20130527043230) do
 
   create_table "cohorts", :force => true do |t|
     t.string   "name"
@@ -43,9 +43,11 @@ ActiveRecord::Schema.define(:version => 20130524062315) do
     t.integer  "cohort_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "slug"
   end
 
   add_index "projects", ["cohort_id"], :name => "index_projects_on_cohort_id"
+  add_index "projects", ["slug"], :name => "index_projects_on_slug", :unique => true
   add_index "projects", ["user_id"], :name => "index_projects_on_user_id"
 
   create_table "roles", :force => true do |t|
@@ -85,10 +87,12 @@ ActiveRecord::Schema.define(:version => 20130524062315) do
     t.integer  "cohort_id"
     t.string   "github_url"
     t.string   "twitter_url"
+    t.string   "slug"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+  add_index "users", ["slug"], :name => "index_users_on_slug", :unique => true
 
   create_table "users_roles", :id => false, :force => true do |t|
     t.integer "user_id"

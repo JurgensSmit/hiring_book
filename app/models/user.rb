@@ -17,4 +17,7 @@ class User < ActiveRecord::Base
 
   mount_uploader :image_url, ImageUploader
 
+  extend FriendlyId
+  friendly_id :name, use: :slugged
+
 end

@@ -6,4 +6,8 @@ class Project < ActiveRecord::Base
   attr_accessible :about, :image_url, :link_url, :name, :user_ids, :cohort_id
 
   mount_uploader :image_url, ImageUploader
+
+  extend FriendlyId
+  friendly_id :name, use: :slugged
+  
 end

@@ -81,7 +81,7 @@ class ProjectsController < ApplicationController
     @project.destroy
 
     respond_to do |format|
-      format.html { redirect_to admin_path }
+      format.html { redirect_to admin_path, :notice => "Project deleted." }
       format.json { head :no_content }
     end
   end
