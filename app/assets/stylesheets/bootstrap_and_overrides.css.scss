@@ -66,11 +66,7 @@ a:hover, a:visited, a:link, a:active {
 	text-decoration: none;
 }
 
-a [class^="icon-"], a [class*=" icon-"] {
-	margin: 6px;
-}
-
-a [class^="badge-"], a [class*=" badge-"] {
+.badge {
 	margin: 1px;
 }
 
