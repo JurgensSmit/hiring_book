@@ -8,7 +8,7 @@
 			<p class="lead"><%= user.about %></p>
 			<p>Contributed to &nbsp;
 				<% user.projects.each do |project| %>
-					<%= link_to project.name, project, class: 'badge badge-success' %>
+					<%= link_to project.name, project, class: 'badge badge-success' unless project.cohort.nil? %>
 				<% end %>
 				&nbsp; in <%= user.cohort.name %>
 			</p>

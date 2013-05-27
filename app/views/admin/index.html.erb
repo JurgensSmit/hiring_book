@@ -51,7 +51,7 @@
     <td><%= project.name %></td>
     <td><%= truncate project.about, length: 25 %></td>
     <td><%= link_to (truncate project.link_url, length: 20), project.link_url %></td>
-    <td><%= project.cohort.nil? ? project.cohort.name : "None (unpublished)" %></td>
+    <td><%= project.cohort.nil? ? "None (unpublished)" : project.cohort.name %></td>
     <td><%= link_to 'Show', project, :class => 'btn btn-mini' %>
     <%= link_to 'Edit', edit_project_path(project), :class => 'btn btn-mini' %>
     <%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-mini' %></td>
