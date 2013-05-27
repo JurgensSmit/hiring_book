@@ -1,8 +1,8 @@
 <p>Hello Admin!  You have a few special responsibilities to keep this site humming.</p>
 <ol>
-  <li>promoting new sign-ups to "User" authorisation, so that they can create and edit projects.</li>
-  <li>publishing users and projects, by adding them to a cohort.  Regular users cannot add themselves or projects to a cohort.  Users or projects without a cohort are not published.</li>
-  <li>keeping an eye on this page to ensure nobody is trying any funny business.</li>
+  <li>Promote new sign-ups to "User" authorisation, so that they can create and edit projects.</li>
+  <li>Publish users and projects by adding them to a cohort.  Regular users cannot add themselves or projects to a cohort.  Users or projects without a cohort are not published.</li>
+  <li>Keep an eye on this page to ensure nobody is trying any funny business.</li>
 </ol>
 <p>Have fun!</p>
 
@@ -33,14 +33,14 @@
   </tbody>
 </table>
 
-<h3>Listing projects</h3>
+<h3>Projects</h3>
 
 <table class="table table-bordered table-striped table-hover">
     <thead>
       <tr>
         <th>Name</th>
-        <th>Link</th>
         <th>About</th>
+        <th>Link</th>
         <th>Cohort</th>
         <th>Actions</th>
       </tr>
@@ -49,9 +49,9 @@
 <% @projects.each do |project| %>
   <tr>
     <td><%= project.name %></td>
-    <td><%= project.link_url %></td>
     <td><%= truncate project.about, length: 25 %></td>
-    <td><%= project.cohort.name unless project.cohort.nil? %></td>
+    <td><%= link_to (truncate project.link_url, length: 20), project.link_url %></td>
+    <td><%= project.cohort.nil? ? project.cohort.name : "None (unpublished)" %></td>
     <td><%= link_to 'Show', project, :class => 'btn btn-mini' %>
     <%= link_to 'Edit', edit_project_path(project), :class => 'btn btn-mini' %>
     <%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-mini' %></td>

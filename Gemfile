@@ -24,6 +24,7 @@ end
 
 group :production do
 	gem 'pg'
+	gem "fog", "~> 1.3.1"
 end
 
 group :test do
@@ -44,4 +45,3 @@ gem "simple_form", ">= 2.1.0"
 gem "figaro", ">= 0.6.3"
 gem "carrierwave"
 gem 'newrelic_rpm'
-gem "fog", "~> 1.3.1"
