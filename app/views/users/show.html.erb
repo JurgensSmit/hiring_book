@@ -1,7 +1,7 @@
 <% title @user.name %>
 <h3>Graduate Profile</h3>
 <%= render @user %>
-<%= @user.cohort.nil? ? '<p class="lead text-warning">Ask an admin to publish your profile by adding you to a cohort</p>'.html_safe : "" %>
+<%= @user.cohort.nil? ? '<p class="lead text-error">Ask an admin to publish your profile by adding you to a cohort</p>'.html_safe : "" %>
 
 <h3>Portfolio</h3>
 <%= render @user.projects %>
