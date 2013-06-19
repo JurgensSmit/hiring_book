@@ -14,6 +14,7 @@
       <th>Email</th>
       <th>Registered</th>
       <th>Role</th>
+      <th>Cohort</th>
       <th>Actions</th>
     </tr>
   </thead>
@@ -24,6 +25,7 @@
       <td><%= user.email %></td>
       <td><%= user.created_at.to_date %></td>
       <td><%= user.roles.first.name.titleize unless user.roles.first.nil? %></td>
+      <td><%= user.cohort.nil? ? "<span class='text-warning'>None (unpublished)</span>".html_safe : user.cohort.name %></td>
       <td>
         <a data-toggle="modal" href="#role-options-<%= user.id %>" class="btn btn-mini" type="button">Change role</a>
         <%= render 'users/role', :user => user %>
@@ -48,12 +50,11 @@
 
 <% @projects.each do |project| %>
   <tr>
-    <td><%= project.name %></td>
+    <td><%= link_to project.name, project %></td>
     <td><%= truncate project.about, length: 25 %></td>
-    <td><%= link_to (truncate project.link_url, length: 20), project.link_url %></td>
-    <td><%= project.cohort.nil? ? "None (unpublished)" : project.cohort.name %></td>
-    <td><%= link_to 'Show', project, :class => 'btn btn-mini' %>
-    <%= link_to 'Edit', edit_project_path(project), :class => 'btn btn-mini' %>
+    <td><%= link_to (truncate project.link_url, length: 20), url_with_protocol(project.link_url) %></td>
+    <td><%= project.cohort.nil? ? "<span class='text-warning'>None (unpublished)</span>".html_safe : project.cohort.name %></td>
+    <td><%= link_to 'Edit', edit_project_path(project), :class => 'btn btn-mini' %>
     <%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-mini' %></td>
   </tr>
 <% end %>
@@ -61,6 +62,7 @@
 <%= link_to 'New Project', new_project_path, class: 'btn' %><br><br>
 
 <h3>Cohorts</h3>
+<p>To publish users and projects on the Hiring Book, add them to the relevant cohort with its edit action.</p>
 <table class="table table-bordered table-striped table-hover">
   <thead>
     <tr>
@@ -73,11 +75,10 @@
 
 <% @cohorts.each do |cohort| %>
   <tr>
-    <td><%= cohort.name %></td>
+    <td><%= link_to cohort.name, cohort %></td>
     <td><%= cohort.users.first.name unless cohort.users.first.nil? %></td>
     <td><%= cohort.projects.first.name unless cohort.projects.first.nil? %></td>
-    <td><%= link_to 'Show', cohort, :class => 'btn btn-mini' %>
-    <%= link_to 'Edit', edit_cohort_path(cohort), :class => 'btn btn-mini' %>
+    <td><%= link_to 'Edit', edit_cohort_path(cohort), :class => 'btn btn-mini' %>
     <%= link_to 'Destroy', cohort, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-mini' %></td>
   </tr>
 <% end %>
